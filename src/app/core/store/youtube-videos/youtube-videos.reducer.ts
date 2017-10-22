@@ -34,7 +34,7 @@ export function videos (state: EchoesVideos =
     case YoutubeVideosActions.ADD:
       return [...state, ...action.payload];
   }
-    case YoutubeVideosActions.ADD:
+    case YoutubeVideosActions.RESET:
       return [];
     
     default:
