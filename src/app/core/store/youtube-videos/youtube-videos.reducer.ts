@@ -23,22 +23,22 @@
 */
 
 import { ActionReducer, Action } from '@ngrx/store';
-import { YoutubeVideoActions } from './youtube-videos.actions';
+import { YoutubeVideosActions } from './youtube-videos.actions';
 
 export interface EchoesVideos extends Array<GoogleApiYouTubeVideoResource> {};
 
-export function videos (state: EchoesVideos = 
-[], action: Action): ActionReducer<EchoesVideos> {
+export function videos (state: EchoesVideos = [], action: Action): ActionReducer<EchoesVideos> {
   
   switch (action.type) {
     case YoutubeVideosActions.ADD:
       return [...state, ...action.payload];
-  }
     case YoutubeVideosActions.RESET:
       return [];
-    
+
     default:
       return state;
+  };
+    
 };
 
 
