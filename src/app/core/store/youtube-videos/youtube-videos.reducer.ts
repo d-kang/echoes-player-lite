@@ -19,26 +19,33 @@
 * empty array. It also expects an action object, which is handled by
 * its type propty and optionally by its payload property. Notice how
 * the RESET case returns an empty array, so it doesn't need to use the
-* action's payload. 
+* action's payload.
 */
 
 import { ActionReducer, Action } from '@ngrx/store';
 import { YoutubeVideosActions } from './youtube-videos.actions';
+type GoogleApiYoutubeVideo = GoogleApiYouTubeVideoResource | Object;
+export interface EchoesVideos extends Array<GoogleApiYoutubeVideo> {};
 
-export interface EchoesVideos extends Array<GoogleApiYouTubeVideoResource> {};
+export const videos: ActionReducer<EchoesVideos> = (state: EchoesVideos = [], action: Action) => {
 
-export function videos (state: EchoesVideos = [], action: Action): ActionReducer<EchoesVideos> {
-  
   switch (action.type) {
     case YoutubeVideosActions.ADD:
       return [...state, ...action.payload];
+
+    case YoutubeVideosActions.REMOVE:
+      return state;
+
     case YoutubeVideosActions.RESET:
       return [];
 
+    case YoutubeVideosActions.UPDATE_METADATA:
+      const amountOfResults = 50;
+      const bottomLimit = state.length === 0 ? state.length : state.length - amountOfResults;
+      const copyOfLastState = [...state].filter((video, index) => index < bottomLimit);
+      return [...copyOfLastState, ...action.payload];
+
     default:
       return state;
-  };
-    
+  }
 };
-
-
