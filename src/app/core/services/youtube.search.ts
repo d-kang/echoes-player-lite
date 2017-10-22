@@ -28,7 +28,7 @@ export class YoutubeSearch {
     });
 	}
 
-	search(query: string, dontReset: Boolean){
+	search(query: string, dontReset: Boolean = true){
 		const isNewSearch = query && query !== this.api.config.get('q');
 		const shouldBeReset = !dontReset;
 

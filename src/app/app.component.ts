@@ -5,7 +5,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 // SERVICES
 import { YoutubeSearch, YoutubePlayerService, NowPlaylistService } from './core/services';
-
+import { EchoesState } from './core/store';
 
 
 import { Observable } from 'rxjs/Observable';
@@ -23,12 +23,11 @@ import { Store } from '@ngrx/store';
 export class App {
 
   constructor(
-
     public youtubeSearch: YoutubeSearch,
     public playerService: YoutubePlayerService,
     public nowPlaylistService: NowPlaylistService,
+    public store: Store<EchoesState>
   ) {
-
 
   }
 
