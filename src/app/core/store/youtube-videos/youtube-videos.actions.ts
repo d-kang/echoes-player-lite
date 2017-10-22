@@ -1,6 +1,3 @@
-import { Injectable } from '@angular/core';
-import { Action } from '@ngrx/store';
-
 /**
 * In this file, we declare the actions that this reducer can handle
 * as the actions that are allowed to be dispatched by the
@@ -12,23 +9,42 @@ import { Action } from '@ngrx/store';
 * action is defined as a static property with a prefix. This ensures
 * the uniqueness of each action once reduceres are invoked. The
 * action interface is imported as to hint at the return value for
-* each action creator funciton. 
+* each action creator funciton.
 */
+
+import { Injectable } from '@angular/core';
+import { Action } from '@ngrx/store';
 
 @Injectable()
 export class YoutubeVideosActions {
   static ADD = '[YoutubeVideos] ADD_VIDEOS';
+  static REMOVE = '[YoutubeVideos] REMOVE';
   static RESET = '[YoutubeVideos] RESET';
+  static UPDATE_METADATA = '[YoutubeVideos] UPDATE_METADATA';
 
-  addVideo(videos: GoogleApiYouTubeVideoResource[]): Action {
+  addVideos(videos: GoogleApiYouTubeVideoResource[]): Action {
     return {
       type: YoutubeVideosActions.ADD,
       payload: videos
     };
   }
+
+  removeVideo(): Action {
+    return {
+      type: YoutubeVideosActions.REMOVE
+    };
+  }
+
   reset(): Action {
     return {
       type: YoutubeVideosActions.RESET
-    }
+    };
+  }
+
+  updateMetaData(videos): Action {
+    return {
+      type: YoutubeVideosActions.UPDATE_METADATA,
+      payload: videos
+    };
   }
 }
