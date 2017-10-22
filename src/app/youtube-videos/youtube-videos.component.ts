@@ -16,6 +16,24 @@ import { YoutubeMediaItemsMock } from '../../../tests/mocks/youtube.media.items'
   template: `
   <article class="col-md-12">
     <h1>Search Results</h1>
+    <div>
+      <form
+        class="navbar-form from-search"
+        (ngSubmit)="search(mediaSearch.value)"
+      >
+        <div class="form-group clearfix">
+        <input
+          placeholder="Explore Media"
+          type="search"
+          class="form-control"
+          autocomplete="off"
+          [value]="searchQuery"
+          #mediaSearch
+          name="mediaSearch"
+        />
+        </div>
+      </form>
+    </div>
     <code>
       There are {{ (videos$ | async).length }} videos
     </code>
