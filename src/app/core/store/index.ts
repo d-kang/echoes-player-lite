@@ -4,18 +4,21 @@ import { Store, StoreModule } from '@ngrx/store';
 import { ActionReducer, Action, combineReducers } from '@ngrx/store';
 import { compose } from '@ngrx/core/compose';
 
-export interface EchoesState {
+// reducers
+import { videos, YoutubeVideosActions, EchoesVideos } from './youtube-videos';
 
+export interface EchoesState {
+ videos: EchoesVideos
 }
 
-const actions = [];
+const actions = [ YoutubeVideosActions ];
 
-const reducers = {};
+const reducers = { videos };
 
 //CoreStoreModule to be imported to our main application ModuleWithProviders
 @NgModule({
   imports: [
-    StoreModule.provideStore(composeStore),
+    StoreModule.provideStore(reducers),
   ],
   declarations: [],
   exports: [],
