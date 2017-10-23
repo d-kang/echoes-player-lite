@@ -14,12 +14,11 @@ import { App } from './app.component';
 // COMPONENTS
 import { CORE_COMPONENTS } from './core/components';
 
-import { HomeModule } from './home';
+import { YoutubeVideosModule } from './youtube-videos';
 
 import { CoreModule } from './core';
 // SERVICES
 import { APP_SERVICES } from './core/services';
-
 
 import 'rxjs/Rx';
 
@@ -41,7 +40,7 @@ const APP_PROVIDERS = [
     RouterModule.forRoot(ROUTES, { useHash: true }),
     CoreModule,
 
-    HomeModule
+    YoutubeVideosModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

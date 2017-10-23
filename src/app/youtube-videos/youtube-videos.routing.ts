@@ -1,8 +1,8 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { Home } from './home.component';
+import { YoutubeVideosComponent } from './youtube-videos.component';
 
 export const routing: ModuleWithProviders = RouterModule.forChild([
-  { path: '', component: Home }
+  { path: '', component: YoutubeVideosComponent }
 ]);
